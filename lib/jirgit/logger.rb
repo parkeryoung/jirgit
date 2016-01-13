@@ -1,7 +1,7 @@
 require 'logger'
 require 'fileutils'
 
-module Jiragit
+module Jirgit
 
   class Logger < ::Logger
 
@@ -11,7 +11,7 @@ module Jiragit
       if path
         @path = path
       else
-        @path = ".git/jiragit/jiragit.log"
+        @path = ".git/jirgit/jirgit.log"
       end
       FileUtils.mkdir_p directory
       super(@path)

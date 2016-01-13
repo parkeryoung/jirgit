@@ -1,6 +1,6 @@
 require 'rspec'
 require 'rspec/mocks'
-require './lib/jiragit.rb'
+require './lib/jirgit.rb'
 require './spec/test_support.rb'
 require './spec/test_repository_context.rb'
 require './spec/cli_context.rb'

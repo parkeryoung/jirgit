@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
-require 'jiragit'
+require 'jirgit'
 
-@log = Jiragit::Logger.new(".git/jiragit/hooks.log")
+@log = Jirgit::Logger.new(".git/jirgit/hooks.log")
 @log.hook = File.basename $0
 @log.level = Logger::DEBUG
 
@@ -23,11 +23,11 @@ def branch_switch?
 end
 
 def current_branch
-  @current_branch ||= Jiragit::Git.current_branch
+  @current_branch ||= Jirgit::Git.current_branch
 end
 
 def previous_branch
-  @previous_branch ||= Jiragit::Git.previous_branch
+  @previous_branch ||= Jirgit::Git.previous_branch
 end
 
 def new_branch?
@@ -62,7 +62,7 @@ def message(message)
 end
 
 def jira_store
-  @jira_store ||= Jiragit::JiraStore.new(".git/jiragit/jira_store")
+  @jira_store ||= Jirgit::JiraStore.new(".git/jirgit/jira_store")
 end
 
 def related_jiras(params)

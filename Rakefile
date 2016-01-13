@@ -8,11 +8,11 @@ task :default => :spec
 namespace :gem do
 
   task :build do
-    `gem build jiragit.gemspec`
+    `gem build jirgit.gemspec`
   end
 
   task :install => [:build] do
-    `gem install pkg/jiragit*.gem`
+    `gem install pkg/jirgit*.gem`
   end
 
 end

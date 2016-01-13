@@ -1,5 +1,5 @@
 require 'rake'
-require './lib/jiragit.rb'
+require './lib/jirgit.rb'
 require 'expect'
 
 module TestSupport
@@ -12,11 +12,11 @@ module TestSupport
   end
 
   def create_test_repository(repository)
-    repo = Jiragit::Git::Repository.create(repository)
+    repo = Jirgit::Git::Repository.create(repository)
     repo.make_a_commit
-    repo.origin = "git@github.com:thirtysixthspan/jiragit_test.git"
+    repo.origin = "git@github.com:thirtysixthspan/jirgit_test.git"
     Dir.chdir repository
-    Jiragit::Cli.new([:install, :silent])
+    Jirgit::Cli.new([:install, :silent])
     Dir.chdir '..'
     repo
   end
@@ -64,13 +64,13 @@ module TestSupport
   def assert_no_relation(first, second)
     sleep(5)
     relations = @js.relations(first)
-    expect(relations).to_not include Jiragit::Tag.new(second)
+    expect(relations).to_not include Jirgit::Tag.new(second)
   end
 
   def assert_relation(first, second)
     sleep(5)
     relations = @js.relations(first)
-    expect(relations).to include Jiragit::Tag.new(second)
+    expect(relations).to include Jirgit::Tag.new(second)
   end
 
   def assert_log_contains(regex)

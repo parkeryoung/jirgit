@@ -1,4 +1,4 @@
-module Jiragit
+module Jirgit
 
   class Vault
 

@@ -1,16 +1,14 @@
 #!/usr/bin/env ruby
 
-require 'jiragit'
+require 'jirgit'
 
-@log = Jiragit::Logger.new(".git/jiragit/hooks.log")
+@log = Jirgit::Logger.new(".git/jirgit/hooks.log")
 @log.hook = File.basename $0
 @log.level = Logger::DEBUG
 
 @log.debug "launched"
 
-@config = Jiragit::Configuration.new("#{`echo ~`.chomp}/.jiragit")
-
-STDIN.reopen('/dev/tty')
+@config = Jirgit::Configuration.new("#{`echo ~`.chomp}/.jirgit")
 
 def commit_source
   ARGV[1]
@@ -54,7 +52,7 @@ def should_modify_commit_message?
 end
 
 def current_branch
-  branch = Jiragit::Git.current_branch
+  branch = Jirgit::Git.current_branch
   @log.debug "#{__method__} #{branch}"
   branch
 end
@@ -66,7 +64,7 @@ def merge_branch
 end
 
 def jira_store
-  @jira_store ||= Jiragit::JiraStore.new(".git/jiragit/jira_store")
+  @jira_store ||= Jirgit::JiraStore.new(".git/jirgit/jira_store")
 end
 
 def related_jiras(params)

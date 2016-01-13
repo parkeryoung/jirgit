@@ -1,6 +1,6 @@
-# Jiragit
+# Jirgit
 
-  A gem to smooth the integration of JIRA and Git in a common software development workflow. Jiragit automates the insertion of JIRA numbers and hyperlinks into Git commits, and provides a tool useful for accessing JIRA and Github while working on the command line. Pronounced 'drag it'.
+  A gem to smooth the integration of JIRA and Git in a common software development workflow. Jirgit automates the insertion of JIRA numbers and hyperlinks into Git commits, and provides a tool useful for accessing JIRA and Github while working on the command line.
 
 ## Context
 
@@ -12,18 +12,18 @@
 
 ## Solution
 
-Install the jiragit gem (globally)
+Install the jirgit gem (globally)
 ```
-$ gem install jiragit
+$ gem install jirgit
 ```
 Configure your JIRA URL
 ```
-$ jiragit configure jira_url https://yourcompany.atlassian.net
+$ jirgit configure jira_url https://yourcompany.atlassian.net
 ```
-Use jiragit to install the custom Git hooks into your repository
+Use jirgit to install the custom Git hooks into your repository
 ```
 $ cd repository
-$ jiragit install
+$ jirgit install
 ```
 When creating a feature branch, choose a name that you will be able to easily remember, such as a short word phrase. It is always easier to remember branch names that you create yourself and that are meaningful:
 ```
@@ -37,7 +37,7 @@ $ git checkout -b improve-one-click-purchase-form
 Switched to a new branch 'improve-one-click-purchase-form'
 What is the JIRA Number? []> PA-12345
 ```
-Jiragit will remember the relationship between the Git branch name and the JIRA number. When you go to create a new commit Jiragit will automiatically insert
+Jirgit will remember the relationship between the Git branch name and the JIRA number. When you go to create a new commit Jirgit will automiatically insert
 the JIRA issue number and a hyperlink to the end of the body of the commit message.
 ```
 $ git commit -m 'revised the form layout by updating the css'
@@ -57,22 +57,22 @@ Date:   Mon Sep 8 17:49:14 2014 -0500
 ```
 Once you push this commit to Github, JIRA will recognize this commit as belonging to the JIRA issue because the JIRA/Github integration searches the entire body of the commit message for JIRA issue numbers.
 
-Jiragit also provides a convenient way to navigate to JIRA issues via the command line. You can view the JIRA for the current branch in your browser:
+Jirgit also provides a convenient way to navigate to JIRA issues via the command line. You can view the JIRA for the current branch in your browser:
 ```
-$ jiragit browse jira
+$ jirgit browse jira
 ```
 or view a specified JIRA in your browser
 ```
-$ jiragit PA-54321
+$ jirgit PA-54321
 ```
 
-Jiragit also provides a convenient way to navigate to branches on Github via the command line. You can view the Github page for the current branch in your browser:
+Jirgit also provides a convenient way to navigate to branches on Github via the command line. You can view the Github page for the current branch in your browser:
 ```
-$ jiragit browse
+$ jirgit browse
 ```
 or view the specified branch in your browser
 ```
-$ jiragit browse improve-one-click-purchase-form
+$ jirgit browse improve-one-click-purchase-form
 ```
 
 ## Requirements

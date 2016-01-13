@@ -1,16 +1,19 @@
 #!/usr/bin/env ruby
 
-require 'jiragit'
+require 'jirgit'
+require 'launchy'
 
-@log = Jiragit::Logger.new(".git/jiragit/hooks.log")
+@log = Jirgit::Logger.new(".git/jirgit/hooks.log")
 @log.hook = File.basename $0
 @log.level = Logger::DEBUG
 
 @log.debug "launched"
 
+@config = Jirgit::Configuration.new("#{`echo ~`.chomp}/.jirgit")
+
 def current_branch
   @current_branch ||= begin
-    branch = Jiragit::Git.current_branch
+    branch = Jirgit::Git.current_branch
     @log.debug "#{__method__} #{branch}"
     branch
   end
@@ -18,14 +21,14 @@ end
 
 def current_commit
   @current_commit ||= begin
-    commit = Jiragit::Git.current_commit
+    commit = Jirgit::Git.current_commit
     @log.debug "#{__method__} #{commit}"
     commit
   end
 end
 
 def jira_store
-  @jira_store ||= Jiragit::JiraStore.new(".git/jiragit/jira_store")
+  @jira_store ||= Jirgit::JiraStore.new(".git/jirgit/jira_store")
 end
 
 def related_jiras(params)
@@ -46,6 +49,15 @@ def relate_commit_to_jiras_for_current_branch
   end
 end
 
+def open_jira_in_browser
+  if @config[:open_jira]
+    related_jiras(branch: current_branch).each do |jira|
+      Launchy.open("#{@config[:jira_url]}/browse/#{jira}")
+    end
+  end
+end
+
 relate_commit_to_current_branch
 relate_commit_to_jiras_for_current_branch
+open_jira_in_browser
 

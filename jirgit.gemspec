@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'jiragit/version'
+require 'jirgit/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "jiragit"
-  spec.version       = Jiragit::VERSION
+  spec.name          = "jirgit"
+  spec.version       = Jirgit::VERSION
   spec.authors       = ["Derrick Parkhurst"]
   spec.email         = ["derrick.parkhurst@gmail.com"]
   spec.summary       = %q{Integrate Jira and Git}
   spec.description   = %q{add jira numbers and urls to your commits automatically}
-  spec.homepage      = "https://github.com/thirtysixthspan/jiragit"
+  spec.homepage      = "https://github.com/thirtysixthspan/jirgit"
   spec.license       = "MIT"
 
   spec.files         = Dir['Rakefile', '{hooks,bin,lib,spec}/**/*', 'README*', 'LICENSE*']

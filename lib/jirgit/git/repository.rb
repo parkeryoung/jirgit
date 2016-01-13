@@ -1,6 +1,6 @@
 require 'pty'
 
-module Jiragit
+module Jirgit
 
   module Git
 

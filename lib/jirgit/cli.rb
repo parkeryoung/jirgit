@@ -1,4 +1,4 @@
-module Jiragit
+module Jirgit
 
   class Cli
 
@@ -27,7 +27,7 @@ module Jiragit
       @params = args[1..-1]
       exit_with_help and return unless COMMANDS.include?(command)
 
-      @config = Jiragit::Configuration.new("#{`echo ~`.chomp}/.jiragit")
+      @config = Jirgit::Configuration.new("#{`echo ~`.chomp}/.jirgit")
 
       begin
         self.send(command)
@@ -47,19 +47,19 @@ module Jiragit
     end
 
     def install
-      puts "Installing into #{Jiragit::Git.repository_root}" unless silent?
+      puts "Installing into #{Jirgit::Git.repository_root}" unless silent?
       gem_hook_paths.each do |hook|
-        `cp #{hook} #{Jiragit::Git.repository_root}/.git/hooks/`
+        `cp #{hook} #{Jirgit::Git.repository_root}/.git/hooks/`
       end
       gem_hook_files.each do |hook|
-        `chmod a+x #{Jiragit::Git.repository_root}/.git/hooks/#{hook}`
+        `chmod a+x #{Jirgit::Git.repository_root}/.git/hooks/#{hook}`
       end
     end
 
     def uninstall
-      puts "Uninstalling from #{Jiragit::Git.repository_root}"
+      puts "Uninstalling from #{Jirgit::Git.repository_root}"
       gem_hook_files.each do |hook|
-        `rm #{Jiragit::Git.repository_root}/.git/hooks/#{hook}`
+        `rm #{Jirgit::Git.repository_root}/.git/hooks/#{hook}`
       end
     end
 
@@ -73,7 +73,7 @@ module Jiragit
     end
 
     def branch
-      branch = @params[0] || Jiragit::Git.current_branch
+      branch = @params[0] || Jirgit::Git.current_branch
       puts "Listing all relations for branch #{branch}"
       puts jira_store.relations(branch: branch).to_a
     end
@@ -89,11 +89,11 @@ module Jiragit
       unless object
         object = case type
         when :jira
-          related(:jira, {branch: Jiragit::Git.current_branch}).first
+          related(:jira, {branch: Jirgit::Git.current_branch}).first
         when :branch
-          Jiragit::Git.current_branch
+          Jirgit::Git.current_branch
         when :commit
-          related(:commit, {branch: Jiragit::Git.current_branch}).first
+          related(:commit, {branch: Jirgit::Git.current_branch}).first
         end
       end
       self.send("browse_#{type}", object)
@@ -134,7 +134,7 @@ module Jiragit
     end
 
     def build
-      commits = Jiragit::Git.log
+      commits = Jirgit::Git.log
       commits.each do |commit|
         commit.jiras.each do |jira|
           puts "relating: commit #{commit.sha} to jira: #{jira}"
@@ -147,7 +147,7 @@ module Jiragit
     private
 
       def jira_store
-        @jira_store ||= JiraStore.new("#{Jiragit::Git.repository_root}/.git/jiragit/jira_store")
+        @jira_store ||= JiraStore.new("#{Jirgit::Git.repository_root}/.git/jirgit/jira_store")
       end
 
       def run(command)
@@ -159,7 +159,7 @@ module Jiragit
       end
 
       def gem_hook_paths
-        spec = Gem::Specification.find_by_name('jiragit')
+        spec = Gem::Specification.find_by_name('jirgit')
         Dir.glob("#{spec.gem_dir}/hooks/*")
       end
 
@@ -218,7 +218,7 @@ module Jiragit
           return
         end
         puts "Browsing branch #{branch}"
-        url = Jiragit::Git.github_branch_url(branch)
+        url = Jirgit::Git.github_branch_url(branch)
         unless url
           puts "No remote repository found on Github"
           return
@@ -233,7 +233,7 @@ module Jiragit
           return
         end
         puts "Browsing commit #{commit}"
-        url = Jiragit::Git.github_commit_url(commit)
+        url = Jirgit::Git.github_commit_url(commit)
         unless url
           puts "No remote repository found on Github"
           return
@@ -244,14 +244,14 @@ module Jiragit
 
       def list_remote_branches
         puts "Fetching remote branch information"
-        Jiragit::Git.remote_branches.each do |branch|
+        Jirgit::Git.remote_branches.each do |branch|
           puts "#{'%-10.10s'%branch.date}\s\s#{branch.short_commit}\s\s#{'%-10.10s'%branch.committer}\s\s#{branch.short_name}"
         end
       end
 
       def list_local_branches
         puts "Fetching local branch information"
-        Jiragit::Git.local_branches.each do |branch|
+        Jirgit::Git.local_branches.each do |branch|
           puts "#{'%-10.10s'%branch.date}\s\s#{branch.short_commit}\s\s#{'%-10.10s'%branch.committer}\s\s#{branch.short_name}"
         end
       end

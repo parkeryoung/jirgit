@@ -1,6 +1,6 @@
 require 'yaml'
 
-module Jiragit
+module Jirgit
 
   class Configuration
 

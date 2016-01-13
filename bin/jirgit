@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'jirgit'
+
+Jirgit::Cli.new(ARGV)

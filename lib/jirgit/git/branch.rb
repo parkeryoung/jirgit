@@ -1,4 +1,4 @@
-module Jiragit
+module Jirgit
 
   module Git
 
@@ -11,11 +11,11 @@ module Jiragit
       end
 
       def date
-        @date ||= Jiragit::Git.timestamp(commit)
+        @date ||= Jirgit::Git.timestamp(commit)
       end
 
       def committer
-        @committer ||= Jiragit::Git.committer(commit)
+        @committer ||= Jirgit::Git.committer(commit)
       end
 
       def short_commit

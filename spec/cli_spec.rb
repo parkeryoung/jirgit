@@ -1,6 +1,6 @@
 require './spec/spec_helper'
 
-module Jiragit
+module Jirgit
 
   describe Cli do
 
@@ -37,7 +37,7 @@ module Jiragit
       before do
         @current_directory = Dir.pwd
         repository = "test_repository"
-        Jiragit::Git::Repository.create(repository)
+        Jirgit::Git::Repository.create(repository)
         Dir.chdir repository
       end
 

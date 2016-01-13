@@ -1,6 +1,6 @@
 require 'set'
 
-module Jiragit
+module Jirgit
 
   class JiraStore
 

@@ -1,6 +1,6 @@
 require './spec/spec_helper'
 
-module Jiragit
+module Jirgit
 
   describe Configuration do
 
